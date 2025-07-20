@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WhatsApp Message Sender</title>
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #25d366;
+            font-family: 'Exo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #075e54;
+            margin-bottom: 10px;
+        }
+
+        .how-to {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .how-to strong {
+            color: #075e54;
+        }
+
+        input[type="tel"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #25d366;
+            border-radius: 10px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        #sendBtn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            background-color: #25d366;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        #sendBtn:hover {
+            background-color: #1da851;
+        }
+
+        small {
+            display: block;
+            margin-top: 10px;
+            color: #888;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .disclaimer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .disclaimer strong {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="title">WhatsApp Message Sender</div>
+
+        <div class="how-to">
+            <strong>What is this?</strong><br>
+            This tool allows you to send a WhatsApp message to any phone number without saving it to your
+            contacts.<br><br>
+            <strong>How to use:</strong><br>
+            1. Enter the phone number with the country code (no + or symbols).<br>
+            2. Click <strong>Send Message</strong>.<br>
+            3. A new WhatsApp chat will open in your browser or app.
+        </div>
+
+        <input type="tel" id="phoneInput" placeholder="Enter phone number (e.g., 971501234567)" maxlength="15" />
+        <div class="error" id="errorMsg">Please enter only digits (7–15 numbers, no + or symbols)</div>
+        <button id="sendBtn"><i class="fa fa-whatsapp"></i> Send Message</button>
+        <small>Example: 971501234567 (no + or dashes)</small>
+
+        <div class="disclaimer">
+
+
+            <strong>Disclaimer:</strong><br>
+            No data is stored or tracked.<br>
+            Not affiliated with WhatsApp or Meta.<br>
+            Developed by <strong>Neil LP</strong>.
+        </div>
+    </div>
+
+    <script>
+        const phoneInput = document.getElementById('phoneInput');
+        const errorMsg = document.getElementById('errorMsg');
+
+        // Restrict input to digits only as user types
+        phoneInput.addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, ''); // Remove non-digits
+            errorMsg.style.display = 'none';
+        });
+
+        document.getElementById('sendBtn').addEventListener('click', function () {
+            const phone = phoneInput.value.trim();
+            const isValid = /^\d{7,15}$/.test(phone);
+
+            if (isValid) {
+                const url = `https://api.whatsapp.com/send?phone=${phone}`;
+                window.open(url, '_blank');
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
