@@ -27,7 +27,11 @@
 
 ## 🛡️ Disclaimer
 
-This free tool helps you send WhatsApp messages without saving contacts.  
-No data is stored or tracked.  
-Not affiliated with WhatsApp or Meta.  
+This is a free tool developed for convenience only.<br>
+No data is collected, saved, or tracked.<br>
+Not affiliated with WhatsApp or Meta Platforms Inc.<br><br>
+Use at your own risk. The developer is not responsible for any misuse or abuse.<br>
+This tool is provided "as is" without warranties or guarantees.<br>
+WhatsApp API behavior may change at any time.<br>
+By using this tool, you agree to use it responsibly and not for spam or illegal purposes.<br><br>
 Developed by **Neil LP**.
